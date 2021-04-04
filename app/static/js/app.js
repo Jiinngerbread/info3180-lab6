@@ -67,11 +67,9 @@ app.component('news-list', {
     let self= this;
     fetch('https://newsapi.org/v2/top-headlines?country=us',
 
-    //fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=2fbe336c4b1e4f1ba995def9a7caccb2',
     {
-      //apiKey: '&apiKey=2fbe336c4b1e4f1ba995def9a7caccb2',
       headers: {
-        'Authorization': ' Bearer 2fbe336c4b1e4f1ba995def9a7caccb2'
+        'Authorization': ' Bearer '
     }
   })
       .then(function(response) {
@@ -93,7 +91,7 @@ app.component('news-list', {
         let self = this;
         fetch('https://newsapi.org/v2/everything?q='+ self.searchTerm + '&language=en', {
           headers: {
-            'Authorization': 'Bearer 2fbe336c4b1e4f1ba995def9a7caccb2'
+            'Authorization': 'Bearer '
           }
         })
           .then(function(response) {
