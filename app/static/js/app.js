@@ -49,6 +49,62 @@ app.component('app-footer', {
           year: (new Date).getFullYear()
       }
   }
-})
+});
+
+app.component('news-list', {
+  name: 'NewsList',
+  template: `
+    <div class="news">
+    <h2>News</h2>
+      <ul class="news__list">
+      <li v-for="article in articles"
+      class="news__item">{{ article.title }}</li>
+    </ul>
+  </div>
+      
+  `,
+  created() {
+    let self= this;
+    fetch('https://newsapi.org/v2/top-headlines?country=us',
+
+    //fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=2fbe336c4b1e4f1ba995def9a7caccb2',
+    {
+      //apiKey: '&apiKey=2fbe336c4b1e4f1ba995def9a7caccb2',
+      headers: {
+        'Authorization': ' Bearer 2fbe336c4b1e4f1ba995def9a7caccb2'
+    }
+  })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
+        self.articles = data.articles;
+      });
+  }, 
+  data() {
+    return {
+      articles:[],
+      searchTerm: ''
+    }
+  },
+  methods: {
+      searchNews() {
+        let self = this;
+        fetch('https://newsapi.org/v2/everything?q='+ self.searchTerm + '&language=en', {
+          headers: {
+            'Authorization': 'Bearer 2fbe336c4b1e4f1ba995def9a7caccb2'
+          }
+        })
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            console.log(data);
+            self.articles = data.articles;
+          });
+      }
+  }
+});
 
 app.mount('#app');
