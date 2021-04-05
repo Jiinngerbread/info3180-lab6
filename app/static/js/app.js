@@ -56,18 +56,28 @@ app.component('news-list', {
   template: `
     <div class="news">
     <h2>News</h2>
-    <div class="row">
-    <div class="col-md-4 mb-5" v-for="article in articles"> 
-      <div class="card h-100">
-        <h5 class="card-title">{{ article.title }}</h5>
-        <div class="card-body">
-          <div class="inner">
-            <img v-bind:src= article.urlToImage  alt="Card image caption default" class="img-fluid">
-          </div>
-          <p class="card-text">{{ article.description }}</p>
+    <div>
+      <div class="form-inline d-flex justify-content-center">
+        <div class="form-group mx-sm-3 mb-2">
+          <label class="sr-only" for="search">Search</label>
+          <input type="search" name="search" v-model="searchTerm" id="search" class="form-control mb-2 mr-sm-2" placeholder="Enter search term here" />
+          <!---<p>You are searching for {{ searchTerm }}</p>-->
+          <button class="btn btn-primary mb-2" @click="searchNews">Search</button>
         </div>
       </div>
+    <div class="row">
+      <div class="col-md-4 mb-5" v-for="article in articles"> 
+        <div class="card h-100">
+          <h5 class="card-title">{{ article.title }}</h5>
+          <div class="card-body">
+            <div class="inner">
+              <img v-bind:src= article.urlToImage  alt="Card image caption default" class="img-fluid">
+            </div>
+            <p class="card-text">{{ article.description }}</p>
+          </div>
+        </div>
     </div>
+  </div>
   
       
   `,
