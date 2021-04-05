@@ -56,11 +56,19 @@ app.component('news-list', {
   template: `
     <div class="news">
     <h2>News</h2>
-      <ul class="news__list">
-      <li v-for="article in articles"
-      class="news__item">{{ article.title }}</li>
-    </ul>
-  </div>
+    <div class="row">
+    <div class="col-md-4 mb-5" v-for="article in articles"> 
+      <div class="card h-100">
+        <h5 class="card-title">{{ article.title }}</h5>
+        <div class="card-body">
+          <div class="inner">
+            <img v-bind:src= article.urlToImage  alt="Card image caption default" class="img-fluid">
+          </div>
+          <p class="card-text">{{ article.description }}</p>
+        </div>
+      </div>
+    </div>
+  
       
   `,
   created() {
@@ -69,7 +77,7 @@ app.component('news-list', {
 
     {
       headers: {
-        'Authorization': ' Bearer '
+        'Authorization': ' Bearer  '
     }
   })
       .then(function(response) {
@@ -91,7 +99,7 @@ app.component('news-list', {
         let self = this;
         fetch('https://newsapi.org/v2/everything?q='+ self.searchTerm + '&language=en', {
           headers: {
-            'Authorization': 'Bearer '
+            'Authorization': 'Bearer  '
           }
         })
           .then(function(response) {

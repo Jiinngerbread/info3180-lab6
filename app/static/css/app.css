@@ -9,3 +9,37 @@ footer  {
 .news > ul {
     list-style-position: inside;
 }
+
+.inner{
+    overflow: hidden;
+}
+
+.inner img {
+    transition: all 1.5s ease;
+}
+
+.inner:hover img {
+    transform:scale(1.5);
+}
+
+.card {
+    border-top-width: thick;
+    border-top-color: rgb(93, 211, 168);
+
+}
+
+.row {
+    margin-top: 8%;
+}
+
+.card-title {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.card-text {
+    padding: 5px;
+    padding-top: 10px;
+    font-size: smaller;
+}
